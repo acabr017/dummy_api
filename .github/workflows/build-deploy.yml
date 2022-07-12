@@ -18,7 +18,16 @@ on: [push, pull_request]
 #       - "test_branch"
 
 jobs:
-  jobs1: 
+  jobs1:
+    env:
+      DATABASE_HOSTNAME: localhost
+      DATABASE_PORT: 5432
+      DATABASE_PASSWORD: password123
+      DATABASE_NAME: fastapi
+      DATABASE_USERNAME: postgres
+      SECRET_KEY: 69haventyoupeopleeverheardofclosingthegoddamndoor?69
+      ALGORITHM: HS256
+      ACCESs_TOKEN_EXPIRE_MINUTES: 30
     runs-on: ubuntu-latest
     steps:
       - name: Pull Git Repo
