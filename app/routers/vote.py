@@ -16,7 +16,7 @@ def vote(vote: schemas.Vote, db: Session = Depends(database.get_db),
         models.Post.id == vote.post_id).first()
     if not voted_post:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                            details=f"Post with ID {vote.post_id} does not exist.")
+                            detail=f"Post with ID {vote.post_id} does not exist.")
 
     # This will query the Vote table and see if there is already an entry for that vote Id and user ID
     vote_query = db.query(models.Vote).filter(

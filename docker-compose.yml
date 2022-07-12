@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+  api:
+    build: .
+    ports:
+      - 8000:8000
+    # env_file:
+    #   - ./.env
+    environment:
+      - DATABASE_HOSTNAME=db
+      - DATABASE_PORT=5432
+      - DATABASE_PASSWORD=password123
+      - DATABASE_NAME=fastapi
+      - DATABASE_USERNAME=postgres
+      - SECRET_KEY=69haventyoupeopleeverheardofclosingthegoddamndoor?69
+      - ALGORITHM=HS256
+      - ACCESs_TOKEN_EXPIRE_MINUTES=30
+    depends_on:
+      - db
+
+  db:
+    image: 'postgres:latest'
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=password123
+      - POSTGRES_DB=fastapi
+
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=arielcabrera3@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=1234
+    ports:
+      - 5050:80
+volumes:
+  postgres-db:

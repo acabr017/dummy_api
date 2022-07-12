@@ -1,0 +1,27 @@
+name: Build and Deploy Code
+# If you want it to work on only push:
+# on: push
+
+# If you want it to work on only pulls"
+# on: pull_request
+
+# If you want it to work on both:
+on: [push, pull_request]
+
+# If you want to specify which brancheS:
+# on:
+#   push:
+#     branches:
+#       - "main"
+#   pull_request:
+#     branches:
+#       - "test_branch"
+
+jobs:
+  jobs1: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull Git Repo
+        uses: actions/checkout@v2
+      - name: Greeting user
+        run: echo "Hello user"
