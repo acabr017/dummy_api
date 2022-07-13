@@ -32,4 +32,4 @@ app.include_router(vote.router)
 
 @app.get("/")
 async def root():
-    return {"message": "Home Page"}
+    return {"message": "Home Page. Successfully deployed from CI/CD pipeline."}
