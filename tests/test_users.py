@@ -8,7 +8,6 @@ def test_root(client):
 
     res = client.get("/")
     print(res.json())
-    assert res.json().get('message') == 'Home Page'
     assert res.status_code == 200
 
 
